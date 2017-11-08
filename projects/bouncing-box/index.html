@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bouncing Box</title>
+	<script src="jquery.min.js"></script>
+	<style>
+	body
+		{
+		background-image: url("http://pre12.deviantart.net/c815/th/pre/f/2016/189/a/8/simple_starfield_background__1_by_reis1989-da950d0.jpg");	
+		}
+		[class="page"]{
+			background-color: green;
+		}
+		[class="box"] {
+			display: block;
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			top: 250px;
+			left: 0px;
+			font-size: 375%;
+			text-align: center;
+			color: lightgray;
+		box-shadow:
+    0 0 0 1em lime,
+    0 1em 0 1em lime,
+    -2.5em 1.5em 0 .5em lime,
+    2.5em 1.5em 0 .5em lime,
+    -3em -3em 0 0 lime,
+    3em -3em 0 0 lime,
+    -2em -2em 0 0 lime,
+    2em -2em 0 0 lime,
+    -3em -1em 0 0 lime,
+    -2em -1em 0 0 lime,
+    2em -1em 0 0 lime,
+    3em -1em 0 0 lime,
+    -4em 0 0 0 lime,
+    -3em 0 0 0 lime,
+    3em 0 0 0 lime,
+    4em 0 0 0 lime,
+    -5em 1em 0 0 lime,
+    -4em 1em 0 0 lime,
+    4em 1em 0 0 lime,
+    5em 1em 0 0 lime,
+    -5em 2em 0 0 lime,
+    5em 2em 0 0 lime,
+    -5em 3em 0 0 lime,
+    -3em 3em 0 0 lime,
+    3em 3em 0 0 lime,
+    5em 3em 0 0 lime,
+    -2em 4em 0 0 lime,
+    -1em 4em 0 0 lime,
+    1em 4em 0 0 lime,
+    2em 4em 0 0 lime;
+
+    background: green;
+    width: 1em;
+    height: 1em;
+    overflow: hidden;
+
+    margin: 100px 50px 65px;
+		}
+	</style>
+</head>
+<body class="board">
+	<div class="box">?</div>
+	<script>
+		(function(){
+			'use strict'
+			var box;
+			var boardWidth;
+			var update;
+			var handleBoxClick;
+			var position;
+            var points;
+            var speed;
+            var direction;
+            
+            direction = 1;
+            position = 0;
+            points = 0;
+            speed = 10;
+			box = $('.box');
+			boardWidth = $('.board').width();
+			
+			update = function() {
+	    	    position = position + (speed * direction);
+	    	    if(position > boardWidth) {
+                    direction = -1;
+                }
+                if(position < 0) {
+                    direction = 1;
+                }
+            box.css('left', position);
+			box.text(points)
+			};
+			handleBoxClick = function() {
+			     speed = speed + 3;
+			     position = 0;
+			     points = points + 1;
+			};
+			//this calls update every 50 milliseconds
+			setInterval(update, 50);
+			// this calls the handle handleBoxClick function every time the box is clicked on
+			box.on('click', handleBoxClick);
+		})();
+	</script>
+</body>
+</html>

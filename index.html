@@ -5,7 +5,6 @@
               <style>
             body {
                 background: rgb(1, 64, 191);
-                color: ;
                 padding: 10px;
                 font-family: arial;
             }
@@ -70,6 +69,14 @@
                 font-size: 1.25em;
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+             $(document).ready(function(){
+                $("button").click(function(){
+                  $("ul.professional-interests").toggle();
+                });
+             });
+        </script>
     </head>
     <body>
         <div id="all-contents">
@@ -104,6 +111,19 @@
                         </section>
                     </p>
                 </div>
+            </main>
+            <main>
+                  <div class="content">
+                      <header>Professional Interests</header>
+                      <section class="interests">
+                          <button>Use me to see my professional interests</button>
+                              <ul class="professional-interests">
+                                  <li>Learning C++</li>
+                                  <li>Get Familiar With Unreal Engine</li>
+                                  <li>Get Familiar With Unity</li>
+                              </ul>
+                      </section>
+                  </div>
             </main>
         </div>
     </body>
